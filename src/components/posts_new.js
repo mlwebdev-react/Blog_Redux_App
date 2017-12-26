@@ -11,14 +11,20 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
+        {field.meta.error}
       </div>
     );
   }
 
+  onSubmit(values) {
+    console.log(values);
+  }
+
   render() {
-    //const { handleSubmit } = this.posts;
+    const { handleSubmit } = this.props;
+
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title"
           name="title"
@@ -34,6 +40,9 @@ class PostsNew extends Component {
           name="content"
           component={this.renderField}
         />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
      );
   }
@@ -41,15 +50,15 @@ class PostsNew extends Component {
 
 function validate(values) {
   const errors = {};
-  
+
   if (!values.title) {
-    error.title = "Enter a title please"
+    errors.title = "Enter a title please";
   }
   if (!values.categories) {
-    error.categories = "Enter some categories please"
+    errors.categories = "Enter some categories please";
   }
   if (!values.content) {
-    error.content = "Enter some content please"
+    errors.content = "Enter some content please";
   }
   return errors;
 }
