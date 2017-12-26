@@ -6,7 +6,7 @@ class PostsNew extends Component {
       <div className="class-name">
         PostsNew!!
       </div>
-    );
+     );
   }
 }
 
