@@ -1,4 +1,5 @@
 // React & Redux Blogging Application
+// Add route configuration for PostsNew component
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
