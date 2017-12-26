@@ -4,6 +4,7 @@ class PostsNew extends Component {
   render() {
     return (
       <div className="class-name">
+        PostsNew!!
       </div>
     );
   }
