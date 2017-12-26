@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import from { Link } 'react-router-dom';
 
 class PostsNew extends Component {
 
