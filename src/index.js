@@ -1,4 +1,4 @@
-// React & Redux Application
+// React & Redux Blog Application
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
