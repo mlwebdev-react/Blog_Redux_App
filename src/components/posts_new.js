@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
+
   renderField(field) {
+    const { meta: {touched, error} } = field;
+    const className = `form-group ${touched && error ? "has-danger" : ""}`;
+
     return (
-      <div className="form-group">
+      <div className={className}>
         <label>{field.label}</label>
         <input
           className="form-control"
           type="text"
           {...field.input}
         />
-        {field.meta.touched ? field.meta.error : ''}      
+        <div className="text-help">
+        	{touched ? error : ''}
+        </div>
       </div>
     );
   }
@@ -49,8 +55,10 @@ class PostsNew extends Component {
 }
 
 function validate(values) {
+  // console.log(values) -> { title: 'asdf', categories: 'asdf', content: 'asdf' }
   const errors = {};
 
+  // Validate the inputs from 'values'
   if (!values.title) {
     errors.title = "Enter a title please";
   }
@@ -60,8 +68,12 @@ function validate(values) {
   if (!values.content) {
     errors.content = "Enter some content please";
   }
+
+  // If errors is empty, the form is fine to submit
+  // If errors has *any* properties, redux form assumes form is invalid
   return errors;
 }
+
 
 export default reduxForm({
   validate,
