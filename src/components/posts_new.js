@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createPost } from '../actions';
+import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { createPost } from "../actions";
 
 class PostsNew extends Component {
 
@@ -19,7 +19,7 @@ class PostsNew extends Component {
           {...field.input}
         />
         <div className="text-help">
-        	{touched ? error : ''}
+        	{touched ? error : ""}
         </div>
       </div>
     );
@@ -27,7 +27,7 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     this.props.createPost(values, () => {
-      this.props.history.push('/');
+      this.props.history.push("/");
     });
   }
 
@@ -61,10 +61,10 @@ class PostsNew extends Component {
 }
 
 function validate(values) {
-  // console.log(values) -> { title: 'asdf', categories: 'asdf', content: 'asdf' }
+  // console.log(values) -> { title: "asdf", categories: "asdf", content: "asdf" }
   const errors = {};
 
-  // Validate the inputs from 'values'
+  // Validate the inputs from "values"
   if (!values.title) {
     errors.title = "Enter a title please";
   }
@@ -83,5 +83,5 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'PostsNewForm'
+  form: "PostsNewForm"
 })(connect(null, { createPost })(PostsNew));
